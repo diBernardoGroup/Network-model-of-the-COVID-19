@@ -112,6 +112,8 @@ in 'stage2.m', 'stage2_r.m', 'stage1.m' and 'stage1_r.m' you need to select:
 1. the initial guess for each parameter
 
 Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
+
+
 2. the time windows specified as an array whose elements are the starting points of each time window
 
 read_national_data.m
