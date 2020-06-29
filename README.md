@@ -1,10 +1,18 @@
 # Description
+
 Thi is the Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case
 https://arxiv.org/abs/2005.07594
 
 The section Network-model-of-the-COVID-19 describes:
 1. The simulator used for the model(scripts and istructions to use them);
-2. How to get figures of the paper (scenario generation instructions)
+2. How to get figures of the paper (scenario generation instructions).
+
+The section Identification Description includes:
+1. The scripts implementing the identification procedure of the paper;
+2. The proccedures to reproduce the identification results showed in the paper.
+
+The repository is organized as follows:
+
 
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
@@ -96,7 +104,7 @@ To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarl
 3.  flux_control_on: set this quantity to '1'.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-# IDENTIFICATION DESCRIPTION
+# Identification Description
 
 
 Here is a list of the scripts used for the identification procedure alongside the procedure to reproduce the system identification.
@@ -137,15 +145,17 @@ id_and_sim.m, id_and_sim_r.m
 Identifies and compares model predictions with data collected
 
 
-INPUT:     1. tab_data        (data vector to fit the model)
-           2. ti              (initial time instant)
-           3. te              (final time instant)
-        4. initial_guess    (initial guess for the identification)
-        5. N               (Number of residents)
-        6. total_active    (Function of currently active people)
-OUTPUT: 1. pars            (parameters of the model (rho*beta, tau, g, I0)
-        2. y               (model prediciton)
-        3. If              (Final number of infected people)
+INPUT:     
+1. tab_data        (data vector to fit the model)
+2. ti              (initial time instant)
+3. te              (final time instant)
+4. initial_guess    (initial guess for the identification)
+5. N               (Number of residents)
+6. total_active    (Function of currently active people)
+OUTPUT: 
+1. pars            (parameters of the model (rho*beta, tau, g, I0)
+2. y               (model prediciton)
+3. If              (Final number of infected people)
 
 Idendtify_model.m 
 Identifies the parameters of the model (nonlinear part)
