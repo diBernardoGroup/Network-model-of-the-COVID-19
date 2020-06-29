@@ -1,6 +1,6 @@
 # Description
-
-Thi is the Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case
+In the 
+Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case
 https://arxiv.org/abs/2005.07594
 
 The section Network-model-of-the-COVID-19 describes:
@@ -12,7 +12,11 @@ The section Identification Description includes:
 2. The proccedures to reproduce the identification results showed in the paper.
 
 The repository is organized as follows:
+1. The scipts related to the network model are in located in the folder 'Code';
+2.
+3.
 
+The folder Code already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more udated parameters one should first launch the identification procedure. In particular... 
 
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
@@ -132,16 +136,16 @@ Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
 
 2. the time windows specified as an array whose elements are the starting points of each time window
 
-read_national_data.m
+read_national_data.m: 
 Reads the national data from the Protezione Civile github repository
 
-read_regional_data.m
+read_regional_data.m: 
 Reads the regional data from the Protezione Civile github repository. Here you need to select:
 1. the code of the region you want to analyse
 2. the legth of the averaging filter
 
 
-id_and_sim.m, id_and_sim_r.m
+id_and_sim.m, id_and_sim_r.m: 
 Identifies and compares model predictions with data collected
 
 
@@ -157,33 +161,36 @@ OUTPUT:
 2. y               (model prediciton)
 3. If              (Final number of infected people)
 
-Idendtify_model.m 
+Idendtify_model.m: 
 Identifies the parameters of the model (nonlinear part)
 
-INPUT:  1. data            (data vector to fit the model)
-        2. lim_inf         (Inferior limit for the parameters)
-        3. lim_sup         (Superior limit for the parameters)
-        4. times           (Time instants for the identification)
-        5. initial_guess    (initial guess for the identification)
-        6. N               (Number of residents)
-        7. total_active    (Function of currently active people)
+INPUT:  
+1. data            (data vector to fit the model)
+2. lim_inf         (Inferior limit for the parameters)
+3. lim_sup         (Superior limit for the parameters)
+4. times           (Time instants for the identification)
+5. initial_guess    (initial guess for the identification)
+6. N               (Number of residents)
+7. total_active    (Function of currently active people)
 
 OUTPUT: pars            (Parameters identidied from the algorithm)
 
-Find_Change
+Find_Change: 
 finds if there is a breakpoint in the window and where it happened
 
-INPUT:  1. data            (data vector to fit the model)
-        2. fit1            (model prediction in the first half of the window)
-        3. fit2            (model prediction in the second half of the window)
-        4. fitTot          (model prediction in the entire window)
-        5. N               (Number of residents)
-        6. total_active    (Function of currently active people)
-        7. pr              (Parameters estimated in the entire window)
+INPUT:  
+1. data            (data vector to fit the model)
+2. fit1            (model prediction in the first half of the window)
+3. fit2            (model prediction in the second half of the window)
+4. fitTot          (model prediction in the entire window)
+5. N               (Number of residents)
+6. total_active    (Function of currently active people)
+7. pr              (Parameters estimated in the entire window)
  
 
-OUTPUT: Where           (Point where the parameter change happened)
-        Change          (Boolean adivising a change in parameters)
+OUTPUT: 
+1. Where           (Point where the parameter change happened)
+2. Change          (Boolean adivising a change in parameters)
 
  
 
@@ -191,13 +198,14 @@ Least_Squares_id
 Runs the constrainde Least square identification (linear part)
 
 
-INPUT:  1. In              (Infected time series)
-        2. total_quar      (Quarantined time series)
-        3. total_hosp      (Hospitalized time series)
-        4. eta             (Eta identified)
-        5. total_dead      (Dead time series)
-        6. tspan           (Time frame for the identification)
-        7. tau             (tau identified at stage 2)
+INPUT:  
+1. In              (Infected time series)
+2. total_quar      (Quarantined time series)
+3. total_hosp      (Hospitalized time series)
+4. eta             (Eta identified)
+5. total_dead      (Dead time series)
+6. tspan           (Time frame for the identification)
+7. tau             (tau identified at stage 2)
 
 OUTPUT: pars            (Parameters identified)
 
