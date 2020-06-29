@@ -117,17 +117,17 @@ OPEN LOOP SCENARIOS
 
 
 To replicate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
-1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2). 
-2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2) 
-3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0').
+1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2);
+2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2); 
+3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0');
 4.  flux_control_on: set this quantity to '0'.
 
 CLOSED LOOP SCENARIOS
 
 
 To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
-1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1'. 
-2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6) 
+1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1';
+2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6);
 3.  flux_control_on: set this quantity to '1'.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -164,8 +164,8 @@ Reads the national data from the Protezione Civile github repository
 
 read_regional_data.m: 
 Reads the regional data from the Protezione Civile github repository. Here you need to select:
-1. the code of the region you want to analyze
-2. the length of the averaging filter
+1. the code of the region you want to analyze;
+2. the length of the averaging filter.
 
 
 id_and_sim.m, id_and_sim_r.m: 
@@ -173,28 +173,28 @@ Identifies and compares model predictions with data collected
 
 
 INPUT:     
-1. tab_data        (data vector to fit the model)
-2. ti              (initial time instant)
-3. te              (final time instant)
-4. initial_guess    (initial guess for the identification)
-5. N               (Number of residents)
-6. total_active    (Function of currently active people)
+1. tab_data        (data vector to fit the model);
+2. ti              (initial time instant);
+3. te              (final time instant);
+4. initial_guess    (initial guess for the identification);
+5. N               (Number of residents);
+6. total_active    (Function of currently active people).
 OUTPUT: 
-1. pars            (parameters of the model (rho*beta, tau, g, I0)
-2. y               (model prediction)
-3. If              (Final number of infected people)
+1. pars            (parameters of the model (rho*beta, tau, g, I0);
+2. y               (model prediction);
+3. If              (Final number of infected people).
 
 Idendtify_model.m: 
 Identifies the parameters of the model (nonlinear part)
 
 INPUT:  
-1. data            (data vector to fit the model)
-2. lim_inf         (Inferior limit for the parameters)
-3. lim_sup         (Superior limit for the parameters)
-4. times           (Time instants for the identification)
-5. initial_guess    (initial guess for the identification)
-6. N               (Number of residents)
-7. total_active    (Function of currently active people)
+1. data            (data vector to fit the model);
+2. lim_inf         (Inferior limit for the parameters);
+3. lim_sup         (Superior limit for the parameters);
+4. times           (Time instants for the identification);
+5. initial_guess    (initial guess for the identification);
+6. N               (Number of residents);
+7. total_active    (Function of currently active people).
 
 OUTPUT: pars            (Parameters identified from the algorithm)
 
@@ -202,18 +202,18 @@ Find_Change:
 finds if there is a breakpoint in the window and where it happened
 
 INPUT:  
-1. data            (data vector to fit the model)
-2. fit1            (model prediction in the first half of the window)
-3. fit2            (model prediction in the second half of the window)
-4. fitTot          (model prediction in the entire window)
-5. N               (Number of residents)
-6. total_active    (Function of currently active people)
-7. pr              (Parameters estimated in the entire window)
+1. data            (data vector to fit the model);
+2. fit1            (model prediction in the first half of the window);
+3. fit2            (model prediction in the second half of the window);
+4. fitTot          (model prediction in the entire window);
+5. N               (Number of residents);
+6. total_active    (Function of currently active people);
+7. pr              (Parameters estimated in the entire window).
  
 
 OUTPUT: 
-1. Where           (Point where the parameter change happened)
-2. Change          (Boolean advising a change in parameters)
+1. Where           (Point where the parameter change happened);
+2. Change          (Boolean advising a change in parameters).
 
  
 
@@ -222,33 +222,33 @@ Runs the constrained Least square identification (linear part)
 
 
 INPUT:  
-1. In              (Infected time series)
-2. total_quar      (Quarantined time series)
-3. total_hosp      (Hospitalized time series)
-4. eta             (Eta identified)
-5. total_dead      (Dead time series)
-6. tspan           (Time frame for the identification)
-7. tau             (tau identified at stage 2)
+1. In              (Infected time series);
+2. total_quar      (Quarantined time series);
+3. total_hosp      (Hospitalized time series);
+4. eta             (Eta identified);
+5. total_dead      (Dead time series);
+6. tspan           (Time frame for the identification);
+7. tau             (tau identified at stage 2).
 
 OUTPUT: pars            (Parameters identified)
 
-IDENTIFICATION PROCEDURE 
+**IDENTIFICATION PROCEDURE** 
 
 Regional Identification: In this section, we provide instruction to run the identification procedure, given a region
 
-1. Select the region code you want to analyze in 'read_regional_data.m' (movemeanK). 
-2. Select the averaging filter length in 'read_regional_data.m'. 
-3. Select the initial guess for the parameters in the script 'stage1_r.m'.
-4. Run 'stage1_r.m'.
-5. Merge the windows following the procedure described in section S2 of the SI.
-6. Run 'stage2_r.m' given the time merged time windows obtained at point 5. .
-7. Run 'stage3_r.m' .
+1. Select the region code you want to analyze in 'read_regional_data.m' (movemeanK); 
+2. Select the averaging filter length in 'read_regional_data.m'; 
+3. Select the initial guess for the parameters in the script 'stage1_r.m';
+4. Run 'stage1_r.m';
+5. Merge the windows following the procedure described in section S2 of the SI;
+6. Run 'stage2_r.m' given the time merged time windows obtained at point 5;
+7. Run 'stage3_r.m'.
 
 National Identification: In this section we provide instruction to run the identification procedure of the national data
  
-1. Select the averaging filter length in 'read_national_data.m' (movemeanK). 
-2. Select the initial guess for the parameters in the script 'stage1_r.m'.
-3. Run 'stage1.m'.
-4. Merge the windows following the procedure described in section S2 of the SI.
-5. Run 'stage2.m' given the time merged time windows obtained at point 4. .
-6. Run 'stage3.m' .
+1. Select the averaging filter length in 'read_national_data.m' (movemeanK); 
+2. Select the initial guess for the parameters in the script 'stage1_r.m';
+3. Run 'stage1.m';
+4. Merge the windows following the procedure described in section S2 of the SI;
+5. Run 'stage2.m' given the time merged time windows obtained at point 4;
+6. Run 'stage3.m'.
