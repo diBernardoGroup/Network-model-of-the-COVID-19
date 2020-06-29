@@ -129,39 +129,39 @@ id_and_sim.m, id_and_sim_r.m
 Identifies and compares model predictions with data collected
 
 
-INPUT:     tab_data        (data vector to fit the model)
-           ti              (initial time instant)
-           te              (final time instant)
-        initial_guess    (initial guess for the identification)
-        N               (Number of residents)
-        total_active    (Function of currently active people)
-OUTPUT: pars            (parameters of the model (rho*beta, tau, g, I0)
-        y               (model prediciton)
-        If              (Final number of infected people)
+INPUT:     1. tab_data        (data vector to fit the model)
+           2. ti              (initial time instant)
+           3. te              (final time instant)
+        4. initial_guess    (initial guess for the identification)
+        5. N               (Number of residents)
+        6. total_active    (Function of currently active people)
+OUTPUT: 1. pars            (parameters of the model (rho*beta, tau, g, I0)
+        2. y               (model prediciton)
+        3. If              (Final number of infected people)
 
 Idendtify_model.m 
 Identifies the parameters of the model (nonlinear part)
 
-INPUT:  data            (data vector to fit the model)
-        lim_inf         (Inferior limit for the parameters)
-        lim_sup         (Superior limit for the parameters)
-        times           (Time instants for the identification)
-        initial_guess    (initial guess for the identification)
-        N               (Number of residents)
-        total_active    (Function of currently active people)
+INPUT:  1. data            (data vector to fit the model)
+        2. lim_inf         (Inferior limit for the parameters)
+        3. lim_sup         (Superior limit for the parameters)
+        4. times           (Time instants for the identification)
+        5. initial_guess    (initial guess for the identification)
+        6. N               (Number of residents)
+        7. total_active    (Function of currently active people)
 
 OUTPUT: pars            (Parameters identidied from the algorithm)
 
 Find_Change
 finds if there is a breakpoint in the window and where it happened
 
-INPUT:  data            (data vector to fit the model)
-        fit1            (model prediction in the first half of the window)
-        fit2            (model prediction in the second half of the window)
-        fitTot          (model prediction in the entire window)
-        N               (Number of residents)
-        total_active    (Function of currently active people)
-        pr              (Parameters estimated in the entire window)
+INPUT:  1. data            (data vector to fit the model)
+        2. fit1            (model prediction in the first half of the window)
+        3. fit2            (model prediction in the second half of the window)
+        4. fitTot          (model prediction in the entire window)
+        5. N               (Number of residents)
+        6. total_active    (Function of currently active people)
+        7. pr              (Parameters estimated in the entire window)
  
 
 OUTPUT: Where           (Point where the parameter change happened)
@@ -173,13 +173,13 @@ Least_Squares_id
 Runs the constrainde Least square identification (linear part)
 
 
-INPUT:  In              (Infected time series)
-        total_quar      (Quarantined time series)
-        total_hosp      (Hospitalized time series)
-        eta             (Eta identified)
-        total_dead      (Dead time series)
-        tspan           (Time frame for the identification)
-        tau             (tau identified at stage 2)
+INPUT:  1. In              (Infected time series)
+        2. total_quar      (Quarantined time series)
+        3. total_hosp      (Hospitalized time series)
+        4. eta             (Eta identified)
+        5. total_dead      (Dead time series)
+        6. tspan           (Time frame for the identification)
+        7. tau             (tau identified at stage 2)
 
 OUTPUT: pars            (Parameters identified)
 
