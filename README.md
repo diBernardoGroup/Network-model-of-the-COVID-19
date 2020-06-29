@@ -1,5 +1,7 @@
 # Description
 Repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
+
+
 https://arxiv.org/abs/2005.07594
 
 The section Network-model-of-the-COVID-19 describes:
@@ -16,7 +18,7 @@ The repository is organized as follows:
 3. Both the above identification folders contain a .txt that can be used to read the data off-line (read_national_data and read_regional_data provide the option to also read the latest data from 'Protezione Civile' github repository-see the corresponding files for more details);
 4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one want to run the identification from stage1.m).
 
-The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more udated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat'.
+The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat'.
 
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
@@ -86,8 +88,20 @@ This function calculates the next-generation matrix alongside the basic reproduc
 This script contains the initial condition of the simulations and loads the model parameters contained in Parameters_Italy_ph2.mat.
 
 'Parameters_Italy_ph2.mat':
+This data file contains the parameters obtained from the identification procedure:
+1. v (product between rho and beta);
+2. alpha;
+3. etah; 
+4. etaq;
+5. I0;
+6. kappa;
+7. kappah;
+8. psi;
+If one wants to re-run the identification with more updated parameters and use them for simulation one have to override 'Parameters_Italy_ph2.mat' with the new parameters.
+In particular:
+1. v and I0 can be found in the matrix 'parameters_t' (respectively column 1 and 4) created by the script stage3.m;
+2. alpha, etah, etaq, kappa, kappah and psi have to be located in the matrix parameters2 created by the script stage3.m.
 
-'Phi.mat':
 
 **SCENARIO GENERATION INSTRUCTIONS**
 
