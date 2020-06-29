@@ -4,19 +4,19 @@ Repository related to the paper 'Intermittent yet coordinated regional strategie
 
 https://arxiv.org/abs/2005.07594
 
-The section Network-model-of-the-COVID-19 describes:
-1. The simulator used for the model(scripts and istructions to use them);
+Section Network-model-of-the-COVID-19 describes:
+1. The simulator used for the model(scripts and instructions to use them);
 2. How to get figures of the paper (scenario generation instructions).
 
 The section Identification Description includes:
 1. The scripts implementing the identification procedure of the paper;
-2. The proccedures to reproduce the identification results showed in the paper.
+2. The procedures to reproduce the identification results showed in the paper.
 
 The repository is organized as follows:
-1. The scipts related to the network model are in located in the folder 'Code';
+1. The scripts related to the network model are in located in the folder 'Code';
 2. The folders National_Identification and Regional_Identification contain the scripts for the regional and national identification procedure;
 3. Both the above identification folders contain a .txt that can be used to read the data off-line (read_national_data and read_regional_data provide the option to also read the latest data from 'Protezione Civile' github repository-see the corresponding files for more details);
-4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one want to run the identification from stage1.m).
+4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one wants to run the identification from stage1.m).
 
 The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat'.
 
@@ -46,7 +46,7 @@ In both main scripts you can set the following quantities:
 In siqhrd_network_main_montecarlo you can also select:    
 
 1.  N_param_var: number of Monte-Carlo simulations;
-2.  perc: maximum ratio of parameter variations;
+2.  perc: the maximum ratio of parameter variations;
 3.  orthogonal: if set to '1' runs an Orthogonal Latin Hypercube for the perturbed parameters generation (each region has its own hypercube).
 
 'data_wrapper.m':
@@ -100,18 +100,23 @@ This data file contains the parameters obtained from the identification procedur
 If one wants to re-run the identification with more updated parameters and use them for simulation one have to override 'Parameters_Italy_ph2.mat' with the new parameters.
 In particular:
 1. v and I0 can be found in the matrix 'parameters_t' (respectively column 1 and 4) created by the script stage3.m;
-2. alpha, etah, etaq, kappa, kappah and psi have to be located in the matrix parameters2 created by the script stage3.m.
+2. alpha, etah, etaq, kappa, kappah, and psi have to be located in the matrix parameters2 created by the script stage3.m.
 
+'flux_mat.mat':
+Contains two matrices:
+1. Phi_rsa: Fluxes deriving from railways, seals, and airports; 
+2. Phi_add: An estimation of private travels between regions (eg. cars).
+These two matrices are used to create the final flux matrix that introduces the diagonal auto fluxes such that the sum on each row is equal to 1. From this matrix is also obtained its post lockdown version with reduced outfluxes by 70%. These operations are carried inside the script 'data_wrapper.m". 
 
 **SCENARIO GENERATION INSTRUCTIONS**
 
 
-In this secition we provide a slection of rules to replicate the numerical results showed in the paper.
+In this section, we provide a selection of rules to replicate the numerical results showed in the paper.
 
 OPEN LOOP SCENARIOS
 
 
-To replcate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
+To replicate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
 1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2). 
 2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2) 
 3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0').
@@ -134,7 +139,7 @@ Here is a list of the scripts used for the identification procedure alongside th
 **IDENTIFICATION SCRIPTS**
 
 
-'stage1.m' and 'stage1_r.m' perform the identification of the time time windows and of \rho*\beta, \tau, I_0 values in each window using
+'stage1.m' and 'stage1_r.m' perform the identification of the time windows and of \rho*\beta, \tau, I_0 values in each window using
 national and regional data, respectively. The identification is performed using an ad hoc nonlinear identification
 procedure.
 
@@ -159,8 +164,8 @@ Reads the national data from the Protezione Civile github repository
 
 read_regional_data.m: 
 Reads the regional data from the Protezione Civile github repository. Here you need to select:
-1. the code of the region you want to analyse
-2. the legth of the averaging filter
+1. the code of the region you want to analyze
+2. the length of the averaging filter
 
 
 id_and_sim.m, id_and_sim_r.m: 
@@ -176,7 +181,7 @@ INPUT:
 6. total_active    (Function of currently active people)
 OUTPUT: 
 1. pars            (parameters of the model (rho*beta, tau, g, I0)
-2. y               (model prediciton)
+2. y               (model prediction)
 3. If              (Final number of infected people)
 
 Idendtify_model.m: 
@@ -191,7 +196,7 @@ INPUT:
 6. N               (Number of residents)
 7. total_active    (Function of currently active people)
 
-OUTPUT: pars            (Parameters identidied from the algorithm)
+OUTPUT: pars            (Parameters identified from the algorithm)
 
 Find_Change: 
 finds if there is a breakpoint in the window and where it happened
@@ -208,12 +213,12 @@ INPUT:
 
 OUTPUT: 
 1. Where           (Point where the parameter change happened)
-2. Change          (Boolean adivising a change in parameters)
+2. Change          (Boolean advising a change in parameters)
 
  
 
 Least_Squares_id
-Runs the constrainde Least square identification (linear part)
+Runs the constrained Least square identification (linear part)
 
 
 INPUT:  
@@ -229,14 +234,14 @@ OUTPUT: pars            (Parameters identified)
 
 IDENTIFICATION PROCEDURE 
 
-Regional Identification: In this section we provide instruction to run the identification procedure, given a region
+Regional Identification: In this section, we provide instruction to run the identification procedure, given a region
 
-1. Select the region code you want to analyse in 'read_regional_data.m' (movemeanK). 
+1. Select the region code you want to analyze in 'read_regional_data.m' (movemeanK). 
 2. Select the averaging filter length in 'read_regional_data.m'. 
 3. Select the initial guess for the parameters in the script 'stage1_r.m'.
 4. Run 'stage1_r.m'.
-5. Merge the windows following the procedure described in the Section S2 of the SI.
-6. Run 'stage2_r.m' given the time meged time windows obtained at point 5. .
+5. Merge the windows following the procedure described in section S2 of the SI.
+6. Run 'stage2_r.m' given the time merged time windows obtained at point 5. .
 7. Run 'stage3_r.m' .
 
 National Identification: In this section we provide instruction to run the identification procedure of the national data
@@ -244,6 +249,6 @@ National Identification: In this section we provide instruction to run the ident
 1. Select the averaging filter length in 'read_national_data.m' (movemeanK). 
 2. Select the initial guess for the parameters in the script 'stage1_r.m'.
 3. Run 'stage1.m'.
-4. Merge the windows following the procedure described in the Section S2 of the SI.
-5. Run 'stage2.m' given the time meged time windows obtained at point 4. .
+4. Merge the windows following the procedure described in section S2 of the SI.
+5. Run 'stage2.m' given the time merged time windows obtained at point 4. .
 6. Run 'stage3.m' .
