@@ -1,11 +1,10 @@
-# DESCRIPTION
+# Description
 Thi is the Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case
 https://arxiv.org/abs/2005.07594
 
 The section Network-model-of-the-COVID-19 describes:
-1. The simulator used for the model;
-2. The scripts and istructions and how to use them
-3. How to get figures of the paper (scenarios)
+1. The simulator used for the model(scripts and istructions to use them);
+2. How to get figures of the paper (scenario generation instructions)
 
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
@@ -102,7 +101,7 @@ To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarl
 
 Here is a list of the scripts used for the identification procedure alongside the procedure to reproduce the system identification.
 
-IDENTIFICATION SCRIPTS
+**IDENTIFICATION SCRIPTS**
 
 
 'stage1.m' and 'stage1_r.m' perform the identification of the time time windows and of \rho*\beta, \tau, I_0 values in each window using
