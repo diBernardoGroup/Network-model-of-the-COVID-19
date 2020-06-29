@@ -99,24 +99,28 @@ IDENTIFICATION SCRIPTS
 'stage1.m' and 'stage1_r.m' perform the identification of the time time windows and of \rho*\beta, \tau, I_0 values in each window using
 national and regional data, respectively. The identification is performed using an ad hoc nonlinear identification
 procedure.
+
+
 'stage2.m' and 'stage2_r.m' identify \rho*\beta, \tau and I_0 values, given the time windows using an ad hoc nonlinear 
-identification algorithm. 'stage2.m' is designed
-to work with national aggregate data while 'stage2_r.m' works with regional data.
+identification algorithm. 'stage2.m' is designed to work with national aggregate data while 'stage2_r.m' works with regional data.
+
+
 'stage3.m' and 'stage3_r.m' identify the remaining parameters using an ordinary least squares algorithm on national
 and regional data, respectively.
  
 in 'stage2.m', 'stage2_r.m', 'stage1.m' and 'stage1_r.m' you need to select:
-1- the initial guess for each parameter
+1. the initial guess for each parameter
+
 Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
-2- the time windows specified as an array whose elements are the starting points of each time window
+2. the time windows specified as an array whose elements are the starting points of each time window
 
 read_national_data.m
 Reads the national data from the Protezione Civile github repository
 
 read_regional_data.m
 Reads the regional data from the Protezione Civile github repository. Here you need to select:
-1- the code of the region you want to analyse
-2- the legth of the averaging filter
+1. the code of the region you want to analyse
+2. the legth of the averaging filter
 
 
 id_and_sim.m, id_and_sim_r.m
