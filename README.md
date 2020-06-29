@@ -69,9 +69,13 @@ This function calculates the next-generation matrix alongside the basic reproduc
 This script contains the initial condition of the simulations and loads the model parameters contained in Parameters_Italy_ph2.mat.
 
 SCENARIO GENERATION ISTRUCTIONS
+
+
 In this secition we provide a slection of rules to replicate the numerical results showed in the paper.
 
 OPEN LOOP SCENARIOS
+
+
 To replcate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
 1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2). 
 2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2) 
@@ -79,6 +83,8 @@ To replcate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.
 4.  flux_control_on: set this quantity to '0'.
 
 CLOSED LOOP SCENARIOS
+
+
 To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
 1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1'. 
 2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6) 
