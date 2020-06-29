@@ -1,8 +1,17 @@
+# DESCRIPTION
+Thi is the Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case
+https://arxiv.org/abs/2005.07594
+
+The section Network-model-of-the-COVID-19 describes:
+1. The simulator used for the model;
+2. The scripts and istructions and how to use them
+3. How to get figures of the paper (scenarios)
+
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-SIMULATOR DESCRIPTION
+**SIMULATOR DESCRIPTION**
 
 
 The simulations are carried by a time-discrete model where each iteration is meant to be a day.
@@ -65,7 +74,7 @@ This function calculates the next-generation matrix alongside the basic reproduc
 'data_italy_ph2.m':
 This script contains the initial condition of the simulations and loads the model parameters contained in Parameters_Italy_ph2.mat.
 
-SCENARIO GENERATION ISTRUCTIONS
+**SCENARIO GENERATION INSTRUCTIONS**
 
 
 In this secition we provide a slection of rules to replicate the numerical results showed in the paper.
@@ -88,7 +97,7 @@ To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarl
 3.  flux_control_on: set this quantity to '1'.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-IDENTIFICATION DESCRIPTION
+# IDENTIFICATION DESCRIPTION
 
 
 Here is a list of the scripts used for the identification procedure alongside the procedure to reproduce the system identification.
