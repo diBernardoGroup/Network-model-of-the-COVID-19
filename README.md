@@ -4,6 +4,13 @@ Network model of the COVID-19 epidemic in Italy to design and investigate region
 The simulations are carried by a time-discrete model where each iteration is meant to be a day.
 Here follows a list of all the files contained and their role in the numerical simulation. 
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+SIMULATOR DESCRIPTION
+
+
+The simulations are carried by a time-discrete model where each iteration is meant to be a day.
+Here follows a list of all the files contained and their role in the numerical simulations contained in the folder 'Code'. 
+
 MAIN SCRIPTS
 1.  'siqhrd_network_main.m' runs a simulation with the nominal parameters contained in 'Parameters_Italy_ph2.mat'.
 2.  'siqhrd_network_main_montecarlo.m' runs Monte-Carlo simulations with perturbation of the nominal parameters contained in 'Parameters_Italy_ph2.mat'.
@@ -61,7 +68,6 @@ This function calculates the next-generation matrix alongside the basic reproduc
 'data_italy_ph2.m':
 This script contains the initial condition of the simulations and loads the model parameters contained in Parameters_Italy_ph2.mat.
 
------------------------------------------------------------------------------------
 SCENARIO GENERATION ISTRUCTIONS
 In this secition we provide a slection of rules to replicate the numerical results showed in the paper.
 
@@ -77,3 +83,114 @@ To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarl
 1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1'. 
 2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6) 
 3.  flux_control_on: set this quantity to '1'.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+IDENTIFICATION DESCRIPTION
+
+
+Here is a list of the scripts used for the identification procedure alongside the procedure to reproduce the system identification.
+
+IDENTIFICATION SCRIPTS
+
+
+'stage1.m' and 'stage1_r.m' perform the identification of the time time windows and of \rho*\beta, \tau, I_0 values in each window using
+national and regional data, respectively. The identification is performed using an ad hoc nonlinear identification
+procedure.
+'stage2.m' and 'stage2_r.m' identify \rho*\beta, \tau and I_0 values, given the time windows using an ad hoc nonlinear 
+identification algorithm. 'stage2.m' is designed
+to work with national aggregate data while 'stage2_r.m' works with regional data.
+'stage3.m' and 'stage3_r.m' identify the remaining parameters using an ordinary least squares algorithm on national
+and regional data, respectively.
+ 
+in 'stage2.m', 'stage2_r.m', 'stage1.m' and 'stage1_r.m' you need to select:
+1- the initial guess for each parameter
+Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
+2- the time windows specified as an array whose elements are the starting points of each time window
+
+read_national_data.m
+Reads the national data from the Protezione Civile github repository
+
+read_regional_data.m
+Reads the regional data from the Protezione Civile github repository. Here you need to select:
+1- the code of the region you want to analyse
+2- the legth of the averaging filter
+
+
+id_and_sim.m, id_and_sim_r.m
+Identifies and compares model predictions with data collected
+
+
+INPUT:     tab_data        (data vector to fit the model)
+           ti              (initial time instant)
+           te              (final time instant)
+        initial_guess    (initial guess for the identification)
+        N               (Number of residents)
+        total_active    (Function of currently active people)
+OUTPUT: pars            (parameters of the model (rho*beta, tau, g, I0)
+        y               (model prediciton)
+        If              (Final number of infected people)
+
+Idendtify_model.m 
+Identifies the parameters of the model (nonlinear part)
+
+INPUT:  data            (data vector to fit the model)
+        lim_inf         (Inferior limit for the parameters)
+        lim_sup         (Superior limit for the parameters)
+        times           (Time instants for the identification)
+        initial_guess    (initial guess for the identification)
+        N               (Number of residents)
+        total_active    (Function of currently active people)
+
+OUTPUT: pars            (Parameters identidied from the algorithm)
+
+Find_Change
+finds if there is a breakpoint in the window and where it happened
+
+INPUT:  data            (data vector to fit the model)
+        fit1            (model prediction in the first half of the window)
+        fit2            (model prediction in the second half of the window)
+        fitTot          (model prediction in the entire window)
+        N               (Number of residents)
+        total_active    (Function of currently active people)
+        pr              (Parameters estimated in the entire window)
+ 
+
+OUTPUT: Where           (Point where the parameter change happened)
+        Change          (Boolean adivising a change in parameters)
+
+ 
+
+Least_Squares_id
+Runs the constrainde Least square identification (linear part)
+
+
+INPUT:  In              (Infected time series)
+        total_quar      (Quarantined time series)
+        total_hosp      (Hospitalized time series)
+        eta             (Eta identified)
+        total_dead      (Dead time series)
+        tspan           (Time frame for the identification)
+        tau             (tau identified at stage 2)
+
+OUTPUT: pars            (Parameters identified)
+
+IDENTIFICATION PROCEDURE 
+
+Regional Identification: In this section we provide instruction to run the identification procedure, given a region
+
+1. Select the region code you want to analyse in 'read_regional_data.m' (movemeanK). 
+2. Select the averaging filter length in 'read_regional_data.m'. 
+3. Select the initial guess for the parameters in the script 'stage1_r.m'.
+4. Run 'stage1_r.m'.
+5. Merge the windows following the procedure described in the Section S2 of the SI.
+6. Run 'stage2_r.m' given the time meged time windows obtained at point 5. .
+7. Run 'stage3_r.m' .
+
+National Identification: In this section we provide instruction to run the identification procedure of the national data
+ 
+1. Select the averaging filter length in 'read_national_data.m' (movemeanK). 
+2. Select the initial guess for the parameters in the script 'stage1_r.m'.
+3. Run 'stage1.m'.
+4. Merge the windows following the procedure described in the Section S2 of the SI.
+5. Run 'stage2.m' given the time meged time windows obtained at point 4. .
+6. Run 'stage3.m' .
