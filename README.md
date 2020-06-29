@@ -1,9 +1,6 @@
 # Network-model-of-the-COVID-19
 Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
 
-The simulations are carried by a time-discrete model where each iteration is meant to be a day.
-Here follows a list of all the files contained and their role in the numerical simulation. 
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 SIMULATOR DESCRIPTION
 
