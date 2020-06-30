@@ -9,22 +9,14 @@ All the scripts listed are used in numerical simulations using MATLAB R2018b on 
 The hardware used for simulations is a Intel Core i7-8750 chip and 16Gb RAM DDR4.
 On this system, each of the simlation with 10000 repetition for MonteCarlo analisys takes approximately 10 minutes. 
 
-**Demo**
-Instruction for the use of the simulator can be found in the section 'SCENARIO GENERATION INSTRUCTIONS' sectio of this readme file.
-
-Instruction for the use of the simulator can be found in the section 'SCENARIO GENERATION INSTRUCTIONS' sectio of this readme file.
-
-The section 'Simulator Description' includes the scripts implementing the simulator used for the model
-
-Section 'Identification Description' includes the scripts implementing the identification procedure of the paper;
-
+**Structure of the repository** 
 The repository is organized as follows:
 1. The scripts related to the network model are in located in the folder 'Code';
 2. The folders National_Identification and Regional_Identification contain the scripts for the regional and national identification procedure;
 3. Both the above identification folders contain a .txt that can be used to read the data off-line (read_national_data and read_regional_data provide the option to also read the latest data from 'Protezione Civile' github repository-see the corresponding files for more details);
 4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one wants to run the identification from stage1.m).
 
-The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat'.
+The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat' (check section for more info
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 **SIMULATOR DESCRIPTION**
@@ -121,11 +113,8 @@ Each one of the listed parameters is an array of 20 elements representing the It
 18. calabria;
 19. sicily;
 20. sardinia;
-Note that this is the order used to generate the parameters through the identification procedure and must be kept for any parameter generation. The simulator then reorder the elepments in alphabetical order to as shown in the plots. 
-If one wants to re-run the identification with more updated parameters and use them for simulation one have to override 'Parameters_Italy_ph2.mat' with the new parameters.
-In particular:
-1. v and I0 can be found in the matrix 'parameters_t' (respectively column 1 and 4) created by the script stage3.m;
-2. alpha, etah, etaq, kappa, kappah, and psi have to be located in the matrix parameters2 created by the script stage3.m.
+Note that this is the order used to generate the parameters through the identification procedure and must be kept for any parameter generation. The simulator then reorder the elements in alphabetical order as shown in the plots. 
+
 
 'flux_mat.mat':
 Contains two matrices:
@@ -184,21 +173,20 @@ Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
 2. the time windows specified as an array whose elements are the starting points of each time window
 
 'Regional_stage1.mat' and 'National_stage1.mat' contain the parameters obtained after stage 1 and stage 2 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each row corresponds to a time window and each column represents a parameter. Specifically the columns correspond, in order, to :
-	
-1. rho * \beta
-2. tau
-3. gamma
-4. I_0
-5. I_f
+1. v (product between rho and beta);
+2. tau;
+3. gamma;
+4. I0;
+5. If.
 
 'Regional_stage2.mat' and 'National_stage2.mat' contain the parameters obtained after stage 3 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each column corresponds to a time window and each row represents a parameter. Specifically, the columns correspond, in order, to:
-1. eta_Q
-1. eta_H
-2. zeta
-3. alpha
-4. psi(I>H)
-5. kappa_Q(Q>H)
-6. kappa_H(H>Q)
+1. etaq;
+1. etah;
+2. zeta;
+3. alpha;
+4. psi;
+5. kappaq;
+6. kappa.
 
 read_national_data.m: 
 Reads the national data from the Protezione Civile github repository
