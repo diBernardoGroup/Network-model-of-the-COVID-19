@@ -27,7 +27,7 @@ This READ ME is organized as follows:
 1. Section 'Identification Description' includes the scripts implementing the identification procedure of the paper and their functionality;
 3. Section 'Demo and Code Usage' includes the instruction to repeat the identification procedure and carry numerical simulations.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-# Simulatior Description
+# Simulator Description
 
 
 The simulations are carried by a time-discrete model where each iteration is meant to be a day.
@@ -103,7 +103,7 @@ This data file contains the parameters obtained from the identification procedur
 5. I0;
 6. kappa;
 7. kappah;
-8. psi;
+8. psi.
 
 
 Each one of the listed parameters is an array of 20 elements representing the Italian regions in the following order:
@@ -126,8 +126,9 @@ Each one of the listed parameters is an array of 20 elements representing the It
 17. basilicata;
 18. calabria;
 19. sicily;
-20. sardinia;
-Note that this is the order used to generate the parameters through the identification procedure and must be kept for any parameter generation. The simulator then reorder the elements in alphabetical order as shown in the plots. 
+20. sardinia.
+
+Note that this is the order used to generate the parameters through the identification procedure and must be kept for any parameter generation. The simulator then reorders the elements in alphabetical order as shown in the plots. 
 
 
 'flux_mat.mat':
@@ -159,7 +160,7 @@ Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
 
 2. the time windows specified as an array whose elements are the starting points of each time window
 
-'Regional_stage1.mat' and 'National_stage1.mat' contain the parameters obtained after stage 1 and stage 2 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each row corresponds to a time window and each column represents a parameter. Specifically the columns correspond, in order, to :
+'Regional_stage1.mat' and 'National_stage1.mat' contain the parameters obtained after stage 1 and stage 2 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each row corresponds to a time window and each column represents a parameter. Specifically, the columns correspond, in order, to :
 1. v (product between rho and beta);
 2. tau;
 3. gamma;
@@ -264,7 +265,7 @@ Regional Identification: In this section, we provide instruction to run the iden
 6. Run 'stage2_r.m' given the time merged time windows obtained at point 5;
 7. Run 'stage3_r.m'.
 
-National Identification: In this section we provide instruction to run the identification procedure of the national data
+National Identification: In this section, we provide instruction to run the identification procedure of the national data
  
 1. Select the averaging filter length in 'read_national_data.m' (movemeanK); 
 2. Select the initial guess for the parameters in the script 'stage1_r.m';
@@ -281,13 +282,13 @@ In this section, we provide a selection of rules to replicate the numerical resu
 
 OPEN LOOP SCENARIOS
 
-To replicate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
+To replicate open-loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
 1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2);
 2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2); 
 3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0');
 4.  flux_control_on: set this quantity to '0'.
 
-To simulate open loop scenarios where you want to force lockdown in all regions but one, in 'siqhrd_network_main_montecarlo.m' uncomment the line 'index = region2index('lombardy');'. Then put the region name you want to free from lockdown and follow the same istruction for general open loop scenarios.
+To simulate open-loop scenarios where you want to force lockdown in all regions but one, in 'siqhrd_network_main_montecarlo.m' uncomment the line 'index = region2index('lombardy');'. Then put the region name you want to free from lockdown and follow the same instructions for general open loop scenarios.
 
 CLOSED LOOP SCENARIOS
 
@@ -300,7 +301,7 @@ For both closed loop and open loop scenarios, the previous instruction set still
 
 LATIN HYPERCUBE GENERATION
 
-If you decided to run montecarlo campaign in the 'siqhrd_network_main_montecarlo.m' you can also select:
+If you decided to run the Montecarlo campaign in the 'siqhrd_network_main_montecarlo.m' you can also select:
 1.  N_param_var: number of Monte-Carlo simulations;
 2.  perc: the maximum ratio of parameter variations;
 3.  orthogonal: if set to '1' runs an Orthogonal Latin Hypercube for the perturbed parameters generation (each region has its own hypercube).
