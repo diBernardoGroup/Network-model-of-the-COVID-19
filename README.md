@@ -4,6 +4,10 @@ Repository related to the paper 'Intermittent yet coordinated regional strategie
 
 https://arxiv.org/abs/2005.07594
 
+All the scripts listed are used in numerical simulations using MATLAB R2018b on Windows 10 (64-bit) OS.
+The hardware used for simulations is a Intel Core i7-8750 chip and 16Gb RAM DDR4.
+On this system, each of the simlation with 10000 repetition for MonteCarlo analisys takes approximately 10 minutes. 
+
 Section Network-model-of-the-COVID-19 describes:
 1. The simulator used for the model(scripts and instructions to use them);
 2. How to get figures of the paper (scenario generation instructions).
