@@ -1,20 +1,22 @@
-# Description
+# Network-model-of-the-COVID-19
 Repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
 
 
 https://arxiv.org/abs/2005.07594
 
+**Sysem Reqirements**
 All the scripts listed are used in numerical simulations using MATLAB R2018b on Windows 10 (64-bit) OS.
 The hardware used for simulations is a Intel Core i7-8750 chip and 16Gb RAM DDR4.
 On this system, each of the simlation with 10000 repetition for MonteCarlo analisys takes approximately 10 minutes. 
 
-Section Network-model-of-the-COVID-19 describes:
-1. The simulator used for the model(scripts and instructions to use them);
-2. How to get figures of the paper (scenario generation instructions).
+**Demo**
+Instruction for the use of the simulator can be found in the section 'SCENARIO GENERATION INSTRUCTIONS' sectio of this readme file.
 
-The section Identification Description includes:
-1. The scripts implementing the identification procedure of the paper;
-2. The procedures to reproduce the identification results showed in the paper.
+Instruction for the use of the simulator can be found in the section 'SCENARIO GENERATION INSTRUCTIONS' sectio of this readme file.
+
+The section 'Simulator Description' includes the scripts implementing the simulator used for the model
+
+Section 'Identification Description' includes the scripts implementing the identification procedure of the paper;
 
 The repository is organized as follows:
 1. The scripts related to the network model are in located in the folder 'Code';
@@ -23,9 +25,6 @@ The repository is organized as follows:
 4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one wants to run the identification from stage1.m).
 
 The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat'.
-
-# Network-model-of-the-COVID-19
-Network model of the COVID-19 epidemic in Italy to design and investigate regional containment and mitigation strategies
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 **SIMULATOR DESCRIPTION**
@@ -101,6 +100,28 @@ This data file contains the parameters obtained from the identification procedur
 6. kappa;
 7. kappah;
 8. psi;
+Each one of the listed parameters is an array of 20 elements representing the Italian regions in the following order:
+1. piedmont;
+2. aosta;
+3. lombardy;
+4. trentino;
+5. veneto;
+6. friuli;
+7. liguria;
+8. emilia;
+9. tuscany;
+10. umbria;
+11. marche;
+12. lazio;
+13. abruzzo;
+14. molise;
+15. campania;
+16. apulia;
+17. basilicata;
+18. calabria;
+19. sicily;
+20. sardinia;
+Note that this is the order used to generate the parameters through the identification procedure and must be kept for any parameter generation. The simulator then reorder the elepments in alphabetical order to as shown in the plots. 
 If one wants to re-run the identification with more updated parameters and use them for simulation one have to override 'Parameters_Italy_ph2.mat' with the new parameters.
 In particular:
 1. v and I0 can be found in the matrix 'parameters_t' (respectively column 1 and 4) created by the script stage3.m;
@@ -160,8 +181,24 @@ in 'stage2.m', 'stage2_r.m', 'stage1.m' and 'stage1_r.m' you need to select:
 
 Moreover, in 'stage2.m' and 'stage2_r.m' you need to select:
 
-
 2. the time windows specified as an array whose elements are the starting points of each time window
+
+'Regional_stage1.mat' and 'National_stage1.mat' contain the parameters obtained after stage 1 and stage 2 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each row corresponds to a time window and each column represents a parameter. Specifically the columns correspond, in order, to :
+	
+1. rho * \beta
+2. tau
+3. gamma
+4. I_0
+5. I_f
+
+'Regional_stage2.mat' and 'National_stage2.mat' contain the parameters obtained after stage 3 of the identification procedure described in the SI. They embed a numerical matrix organized as follows: Each column corresponds to a time window and each row represents a parameter. Specifically, the columns correspond, in order, to:
+1. eta_Q
+1. eta_H
+2. zeta
+3. alpha
+4. psi(I>H)
+5. kappa_Q(Q>H)
+6. kappa_H(H>Q)
 
 read_national_data.m: 
 Reads the national data from the Protezione Civile github repository
