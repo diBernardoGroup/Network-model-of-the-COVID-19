@@ -1,22 +1,30 @@
-# Network-model-of-the-COVID-19
+# # Network-model-of-the-COVID-19
 Repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
 
 
 https://arxiv.org/abs/2005.07594
 
 **Sysem Reqirements**
+
 All the scripts listed are used in numerical simulations using MATLAB R2018b on Windows 10 (64-bit) OS.
 The hardware used for simulations is a Intel Core i7-8750 chip and 16Gb RAM DDR4.
 On this system, each of the simlation with 10000 repetition for MonteCarlo analisys takes approximately 10 minutes. 
 
 **Structure of the repository** 
+
 The repository is organized as follows:
 1. The scripts related to the network model are in located in the folder 'Code';
 2. The folders National_Identification and Regional_Identification contain the scripts for the regional and national identification procedure;
 3. Both the above identification folders contain a .txt that can be used to read the data off-line (read_national_data and read_regional_data provide the option to also read the latest data from 'Protezione Civile' github repository-see the corresponding files for more details);
 4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one wants to run the identification from stage1.m).
 
-The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat' (check section for more info
+The folder 'Code' already contains the parameters from the paper to simulate the network model. If one wants to re-run the identification with more updated parameters one should first launch the identification procedure. In particular, after running the identification procedure as described in the identification section, one should manually format the data as in the example file 'Parameters_Italy_ph2.mat' (check section for more info)
+
+**Structure of the following contents**
+
+This READ ME is organized as follows:
+1. Section 'Simulator Description' includes the scripts implementing the simulator used for the model and their functionality
+1. Section 'Identification Description' includes the scripts implementing the identification procedure of the paper and their functionality
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 **SIMULATOR DESCRIPTION**
@@ -122,35 +130,8 @@ Contains two matrices:
 2. Phi_add: An estimation of private travels between regions (eg. cars).
 These two matrices are used to create the final flux matrix that introduces the diagonal auto fluxes such that the sum on each row is equal to 1. From this matrix is also obtained its post lockdown version with reduced outfluxes by 70%. These operations are carried inside the script 'data_wrapper.m". 
 
-**SCENARIO GENERATION INSTRUCTIONS**
-
-
-In this section, we provide a selection of rules to replicate the numerical results showed in the paper.
-
-OPEN LOOP SCENARIOS
-
-
-To replicate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
-1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2);
-2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2); 
-3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0');
-4.  flux_control_on: set this quantity to '0'.
-
-CLOSED LOOP SCENARIOS
-
-
-To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
-1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1';
-2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6);
-3.  flux_control_on: set this quantity to '1'.
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-# Identification Description
-
-
-Here is a list of the scripts used for the identification procedure alongside the procedure to reproduce the system identification.
-
-**IDENTIFICATION SCRIPTS**
+**IDENTIFICATION DESCRIPTIONS**
 
 
 'stage1.m' and 'stage1_r.m' perform the identification of the time windows and of \rho*\beta, \tau, I_0 values in each window using
@@ -261,6 +242,8 @@ INPUT:
 
 OUTPUT: pars            (Parameters identified)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+**DEMO AND CODE USAGE** 
 **IDENTIFICATION PROCEDURE** 
 
 Regional Identification: In this section, we provide instruction to run the identification procedure, given a region
@@ -281,3 +264,24 @@ National Identification: In this section we provide instruction to run the ident
 4. Merge the windows following the procedure described in section S2 of the SI;
 5. Run 'stage2.m' given the time merged time windows obtained at point 4;
 6. Run 'stage3.m'.
+
+-----------------------------------------------------------------------------------------------------------------------
+**SCENARIO GENERATION INSTRUCTIONS**
+
+
+In this section, we provide a selection of rules to replicate the numerical results showed in the paper. As well as instruction to generate new result with custom parameters generate with the previous identification procedure.
+
+OPEN LOOP SCENARIOS
+
+To replicate open loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
+1.  flux_selector: set this quantity to 'high' (figures S1,S2,S3) or 'low' (figure Fig2);
+2.  select: set this quantity to '0' (figures Fig2, S1), to '2' (figure S3), to '3' (figure S2); 
+3.  index: put the name the region where you want to force deactivation of social distancing as in figures Fig2, S1 (works only if select is set to '0');
+4.  flux_control_on: set this quantity to '0'.
+
+CLOSED LOOP SCENARIOS
+
+To replcate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
+1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1';
+2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6);
+3.  flux_control_on: set this quantity to '1'.
