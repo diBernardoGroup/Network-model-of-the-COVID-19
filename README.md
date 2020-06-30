@@ -135,6 +135,7 @@ Note that this is the order used to generate the parameters through the identifi
 Contains two matrices:
 1. Phi_rsa: Fluxes deriving from railways, seals, and airports; 
 2. Phi_add: An estimation of private travels between regions (eg. cars).
+
 These two matrices are used to create the final flux matrix that introduces the diagonal auto fluxes such that the sum on each row is equal to 1. From this matrix is also obtained its post lockdown version with reduced outfluxes by 70%. These operations are carried inside the script 'data_wrapper.m". 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -310,4 +311,4 @@ If you keep the default values, the code simulates scenarios coherent with the r
 
 CUSTOMIZED SCENARIOS 
 
-If you want to generate scenarios with customized parameters you can run the identification procedure to get the two filed 'Regional_stage1.mat' and 'Regional_stage2.mat' for each of the 20 regions (you can find more details about those .mat files in the section 'Identification Description'). From those matrices, you can extract the parameters to manually overwrite the data of 'Parameters_Italy_ph2.mat' by keeping its structure (you can find more details about this ,mat file in the section 'Simulator Description'). After that, you can simply follow the instructions listed in OPEN LOOP SCENARIOS and CLOSED LOOP SCENARIOS sections.
+If you want to generate scenarios with customized parameters you can run the identification procedure to get the two filed 'Regional_stage1.mat' and 'Regional_stage2.mat' for each of the 20 regions (you can find more details about these .mat files in the section 'Identification Description'). From these matrices, you can extract the parameters to manually overwrite the data of 'Parameters_Italy_ph2.mat' by keeping its structure (you can find more details about this ,mat file in the section 'Simulator Description'). After that, you can simply follow the instructions listed in OPEN LOOP SCENARIOS and CLOSED LOOP SCENARIOS sections.
