@@ -1,4 +1,4 @@
-## Network-model-of-the-COVID-19
+# Network-model-of-the-COVID-19: General Introduction
 Repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
 
 
@@ -27,7 +27,7 @@ This READ ME is organized as follows:
 1. Section 'Identification Description' includes the scripts implementing the identification procedure of the paper and their functionality
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-**SIMULATOR DESCRIPTION**
+# Simulatior Description
 
 
 The simulations are carried by a time-discrete model where each iteration is meant to be a day.
@@ -131,7 +131,7 @@ Contains two matrices:
 These two matrices are used to create the final flux matrix that introduces the diagonal auto fluxes such that the sum on each row is equal to 1. From this matrix is also obtained its post lockdown version with reduced outfluxes by 70%. These operations are carried inside the script 'data_wrapper.m". 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-**IDENTIFICATION DESCRIPTIONS**
+# Identification Description**
 
 
 'stage1.m' and 'stage1_r.m' perform the identification of the time windows and of \rho*\beta, \tau, I_0 values in each window using
@@ -243,7 +243,7 @@ INPUT:
 OUTPUT: pars            (Parameters identified)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-**DEMO AND CODE USAGE** 
+# DEMO AND CODE USAGE 
 **IDENTIFICATION PROCEDURE** 
 
 Regional Identification: In this section, we provide instruction to run the identification procedure, given a region
