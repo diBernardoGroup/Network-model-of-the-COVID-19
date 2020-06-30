@@ -1,4 +1,4 @@
-# # Network-model-of-the-COVID-19
+## Network-model-of-the-COVID-19
 Repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
 
 
