@@ -8,7 +8,7 @@ https://arxiv.org/abs/2005.07594
 
 All the scripts listed are used in numerical simulations using MATLAB R2018b on Windows 10 (64-bit) OS.
 The hardware used for simulations is an Intel Core i7-8750 chip and 16Gb RAM DDR4.
-With this system, each of the simulations with 10000 repetitions for Montecarlo analysis takes approximately 10 minutes. 
+With this system, each of the simulations with 10000 repetitions for Montecarlo campaign takes approximately 10 minutes. 
 
 **REPOSITORY ORGANIZATION** 
 
