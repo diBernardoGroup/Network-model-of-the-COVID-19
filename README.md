@@ -4,9 +4,10 @@ Welcome to the repository related to the paper 'Intermittent yet coordinated reg
 
 https://arxiv.org/abs/2005.07594
 
+
 **SYSTEM REQUIREMENTS**
 
-All the scripts listed are used in numerical simulations using MATLAB R2018b on Windows 10 (64-bit) OS.
+All the scripts listed were developed using MATLAB R2018b on Windows 10 (64-bit) OS.
 The hardware used for simulations is an Intel Core i7-8750 chip and 16Gb RAM DDR4.
 With this system, each of the simulations with 10000 repetitions for Montecarlo campaign takes approximately 10 minutes. 
 
@@ -14,7 +15,7 @@ With this system, each of the simulations with 10000 repetitions for Montecarlo 
 
 The repository is organized as follows:
 1. The scripts related to the network model are in located in the folder 'Code';
-2. The folders National_Identification and Regional_Identification contain the scripts for the regional and national identification procedure;
+2.  The folders National_Identification and Regional_Identification contain the scripts for the regional and national identification procedures;
 3. Both the above identification folders contain a .txt that can be used to read the data off-line (read_national_data and read_regional_data provide the option to also read the latest data from 'Protezione Civile' github repository-see the corresponding files for more details);
 4. Both the above identification folders contain a .mat that can be used to run directly the stage3.m (this .mat file is generated as an output from stage2.m therefore it is not needed if one wants to run the identification from stage1.m).
 
@@ -256,14 +257,14 @@ Here we provide the instruction to correctly use the code to get the results of 
 
 **IDENTIFICATION PROCEDURE**
 
-Regional Identification: In this section, we provide instruction to run the identification procedure, given a region
+Regional Identification: In this section, we provide instructions to run the identification procedure for a given region
 
 1. Select the region code you want to analyze in 'read_regional_data.m' (movemeanK); 
 2. Select the averaging filter length in 'read_regional_data.m'; 
 3. Select the initial guess for the parameters in the script 'stage1_r.m';
 4. Run 'stage1_r.m';
 5. Merge the windows following the procedure described in section S2 of the SI;
-6. Run 'stage2_r.m' given the time merged time windows obtained at point 5;
+6. Run 'stage2_r.m' given the merged time windows obtained at point 5;
 7. Run 'stage3_r.m'.
 
 National Identification: In this section, we provide instruction to run the identification procedure of the national data
@@ -272,7 +273,7 @@ National Identification: In this section, we provide instruction to run the iden
 2. Select the initial guess for the parameters in the script 'stage1_r.m';
 3. Run 'stage1.m';
 4. Merge the windows following the procedure described in section S2 of the SI;
-5. Run 'stage2.m' given the time merged time windows obtained at point 4;
+5. Run 'stage2.m' given the merged time windows obtained at point 4;
 6. Run 'stage3.m'.
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -293,7 +294,7 @@ To simulate open-loop scenarios where you want to force lockdown in all regions 
 
 CLOSED LOOP SCENARIOS
 
-To replicate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the followiing quantities:
+To replicate closed loop scenarios you need to run 'siqhrd_network_main_montecarlo.m' with the following quantities:
 1.  flux_selector: setting this quantity to 'high' or 'low' will determine only initial condition for fluxes if flux_control_on is set '1';
 2.  select: set this quantity to '1' (figures Fig3a, Fig3b, Fig4, S5, S7), to '4' (figure Fig3c, S2, S6);
 3.  flux_control_on: set this quantity to '1'.
@@ -311,4 +312,4 @@ If you keep the default values, the code simulates scenarios coherent with the r
 
 CUSTOMIZED SCENARIOS 
 
-If you want to generate scenarios with customized parameters you can run the identification procedure to get the two filed 'Regional_stage1.mat' and 'Regional_stage2.mat' for each of the 20 regions (you can find more details about these .mat files in the section 'Identification Description'). From these matrices, you can extract the parameters to manually overwrite the data of 'Parameters_Italy_ph2.mat' by keeping its structure (you can find more details about this ,mat file in the section 'Simulator Description'). After that, you can simply follow the instructions listed in OPEN LOOP SCENARIOS and CLOSED LOOP SCENARIOS sections.
+If you want to generate scenarios with customized parameters you can run the identification procedure to get the two files 'Regional_stage1.mat' and 'Regional_stage2.mat' for each of the 20 regions (you can find more details about these .mat files in the section 'Identification Description'). From these matrices, you can extract the parameters to manually overwrite the data of 'Parameters_Italy_ph2.mat' by keeping its structure (you can find more details about this .mat file in the section 'Simulator Description'). After that, you can simply follow the instructions listed in OPEN LOOP SCENARIOS and CLOSED LOOP SCENARIOS sections.
