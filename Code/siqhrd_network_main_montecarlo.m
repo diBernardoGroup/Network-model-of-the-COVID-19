@@ -25,7 +25,7 @@ simulate_dynamics
 
 % GENERATION OF HYPERCUBES ------------------------------------------------
 disp('Generating Hypercubes...');
-N_param_var = 100;                                                          % Sets number of Monte-Carlo simulations
+N_param_var = 10000;                                                          % Sets number of Monte-Carlo simulations
 perc = 0.2;                                                                 % Sets variation ratio
 orthogonal = 1;                                                             % Flag for Orthogonal Latin Hypercube Activation
 hypercube_gen;
