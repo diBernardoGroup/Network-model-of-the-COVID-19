@@ -19,7 +19,7 @@ for i = 1 : M
     yyaxis right
     stdshade(squeeze(I_hyp(i, :, :)/N(i))',0.2,'b',time,1);
     stdshade(squeeze(Q_hyp(i, :, :)/N(i))',0.2,'m',time,1);
-%     stdshade(squeeze(D_hyp(i, :, :)/N(i))',0.2,'k',time,1);       #uncomment to display deaths in regional panels
+%     stdshade(squeeze(D_hyp(i, :, :)/N(i))',0.2,'k',time,1);       %uncomment to display deaths in regional panels
 
     ylim([0 y_max]);
     xlim([0 final_time]);
@@ -27,17 +27,6 @@ for i = 1 : M
         title(regions{i}, 'color', 'r');
     else
         title(regions{i});
-    end
-    if ismember(i, 17 : 20)
-        xlabel('days');
-    end
-    
-    if i == 1
-        axP = get(gca,'Position');
-        legend('\itH-mean', '\itH-range', '\itH-max',...
-               '\itI-mean', '\itI-range',...
-               '\itQ-mean', '\itQ-range','Location','northwestoutside');
-         set(gca, 'Position', axP)
     end
 
     %Marks intervals of social distancing
@@ -116,13 +105,6 @@ ylim([0 y_max]);
 xlim([0 final_time]);
 title('Italy');
 box on
-
-xlabel('days');
-legend('\itH-mean', '\itH-range', '\itH-max',...
-       '\itI-mean', '\itI-range',...
-       '\itQ-mean', '\itQ-range',...
-       '\itR-mean', '\itR-range',...
-       '\itD-mean', '\itD-range','Location','northwestoutside');
 
 %Metrics
 avg_case = zeros(1,N_param_var);
