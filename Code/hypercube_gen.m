@@ -1,5 +1,5 @@
 % REGIONAL PARAMETER PERTURBATION -----------------------------------------
-nominal_param_values = [I0, kappa, kappa_H, eta_Q, alpha_0, psi];
+nominal_param_values = [kappa, kappa_H, eta_Q, eta_H, alpha_0, psi, I0];
 N_param = length(nominal_param_values(1,:));
 
 params = zeros(M, N_param_var, N_param);
@@ -28,11 +28,12 @@ else
     end
 end
 
-I0_hyp = squeeze(params(:,:,1));
-kappa_hyp = squeeze(params(:,:,2));
-kappa_H_hyp = squeeze(params(:,:,3));
-eta_Q_hyp = squeeze(params(:,:,4));
+kappa_hyp = squeeze(params(:,:,1));
+kappa_H_hyp = squeeze(params(:,:,2));
+eta_Q_hyp = squeeze(params(:,:,3));
+eta_H_hyp = squeeze(params(:,:,4));
 alpha_0_hyp = squeeze(params(:,:,5));
 psi_hyp = squeeze(params(:,:,6));
+I0_hyp = squeeze(params(:,:,7));
 
 clear('params')
