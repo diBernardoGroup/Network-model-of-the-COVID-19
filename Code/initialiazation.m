@@ -41,8 +41,13 @@ mu_inf_K = zeros(1, length(time));
 C_min=0.1;
 C_max=0.2;
 
-SD_ON = ones(M,length(time));
-SD_OFF = zeros(M,length(time));
+if select == 3
+    SD_OFF = ones(M,length(time));
+    SD_ON = zeros(M,length(time));
+else
+    SD_ON = ones(M,length(time));
+    SD_OFF = zeros(M,length(time));
+end
 
 rho_0(index) = rho_max(index);
 SD_ON(index,:) = 0;
