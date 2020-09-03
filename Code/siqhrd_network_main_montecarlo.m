@@ -133,5 +133,4 @@ parfor hyi = 1 : N_param_var
 end 
     
 % RESULTS -----------------------------------------------------------------
-disp('Plotting results...');
 show_data_montecarlo
