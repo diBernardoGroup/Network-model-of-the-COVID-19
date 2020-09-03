@@ -15,8 +15,8 @@ population('molise')     = 305617;
 population('piedmont')   = 4356406;
 population('sardinia')   = 1639591;
 population('sicily')     = 4999891;
-population('tuscany')    = 1072276;
-population('trentino')   = 3729641;
+population('tuscany')    = 3729641;
+population('trentino')   = 1072276;
 population('umbria')     = 882015;
 population('veneto')     = 4905854;
 % https://www.wikiwand.com/en/Regions_of_Italy
