@@ -146,6 +146,8 @@ These two matrices are used to create the final flux matrix that introduces the 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 # Identification Description
 
+For a detailed explenation of what is done in Stage 1, Stage 2 and Stage 3 please refer to Section S2 of the Supplementary Information.
+In the following we give a brief explenation of what each file of the identification does.
 
 'stage1.m' and 'stage1_r.m' perform the identification of the time windows and of \rho*\beta, \tau, I_0 values in each window using
 national and regional data, respectively. The identification is performed using an ad hoc nonlinear identification
