@@ -315,3 +315,11 @@ If you keep the default values, the code simulates scenarios coherent with the r
 CUSTOMIZED SCENARIOS 
 
 If you want to generate scenarios with customized parameters you can run the identification procedure to get the two files 'Regional_stage1.mat' and 'Regional_stage2.mat' for each of the 20 regions (you can find more details about these .mat files in the section 'Identification Description'). From these matrices, you can extract the parameters to manually overwrite the data of 'Parameters_Italy_ph2.mat' by keeping its structure (you can find more details about this .mat file in the section 'Simulator Description'). After that, you can simply follow the instructions listed in OPEN LOOP SCENARIOS and CLOSED LOOP SCENARIOS sections.
+
+-----------------------------------------------------------------------------------------------------------------------
+**DATA ANALYSIS**
+If you want to run your own data analysis on the results showed in the paper you can access to the folder 'Figures' and run the commands:
+1. [avgs,stds] = get_regional_data('name');
+2. [avgs,stds] = get_national_data('name');
+While 'get_regional_data' only works with the multi plot of the regional panels (a) the command 'get_national_data' only works with the single plot figure of the national panel (b,c).
+These scripts will allow you to get access to the final trajectories in terms of average and standard deviation of all the scenarios showed in the paper.
