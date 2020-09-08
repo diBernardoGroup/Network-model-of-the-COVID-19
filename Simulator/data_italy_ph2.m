@@ -47,7 +47,6 @@ beds_intensive_care('veneto')     = 705;
 
 beds_intensive_care('trentino') = beds_intensive_care('trento') + beds_intensive_care('bolzano');
 
-% http://www.salute.gov.it/imgs/C_17_notizie_4659_0_file.pdf
 hospitalized = containers.Map;
 hospitalized('abruzzo')    = 313 ;
 hospitalized('basilicata') = 53  ;
