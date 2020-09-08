@@ -321,6 +321,7 @@ If you want to generate scenarios with customized parameters you can run the ide
 
 If you want to run your own data analysis on the results showed in the paper you can access to the folder 'Figures' and run the commands:
 1. [avgs,stds] = get_regional_data('name');
-2. [avgs,stds] = get_national_data('name');
+2. [avgs,stds] = get_national_data('name').
+
 While 'get_regional_data' only works with the multi plot of the regional panels (a) the command 'get_national_data' only works with the single plot figure of the national panel (b,c).
 These scripts will allow you to get access to the final trajectories in terms of average and standard deviation of all the scenarios showed in the paper.
