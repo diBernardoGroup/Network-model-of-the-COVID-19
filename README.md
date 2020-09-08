@@ -43,8 +43,8 @@ MAIN SCRIPTS
 In both main scripts you can set the following quantities:
 1.  scenario_name: set the name of you scenario for the export of the figures and metrics;
 2.  flux_selector: you can decide to use pre-lockdown nominal fluxes contained in flux_mat.mat with 'high' attribute or the one with lockdown reduced outfluxes with the 'low' attribute;
-3.  test_factor: this is a multiplier for the alpha parameter. This values is common to all region, leave it to 1 to use the identified alpha (we recommend to not exceed the value 3);
-4.  rho_factor: this is a reduction factor for the maximum admissible rho value. This values is common to all region, leave it to 1 to use the identified rho;
+3.  test_factor: this is a multiplier for the alpha parameter. This parameter is common to all region, leave it to 1 to use the identified alpha (we recommend to not exceed the value 3);
+4.  rho_factor: this is a reduction factor for the maximum admissible rho value. This parameter is common to all region, leave it to 1 to use the identified rho;
 2.  select: you can decide to run a simulation with the nominal parameters by setting select to '0', with bang-bang regional control by setting select at  '1', with forced social distancing (increased rho) by setting select to '2', with no social distancing at all by setting select to '3' or with a bang=bang national control by setting select at '4';
 3.  index: if you want to individually set one region to deactivate its social distancing you can put the name of such a region and set select to '0';
 4.  flux_control_on: you can activate the bang-bang control also on fluxes by setting  flux_control_on to '1'. In this case, you have to set select to '1' or '4' also;
