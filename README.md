@@ -318,6 +318,7 @@ If you want to generate scenarios with customized parameters you can run the ide
 
 -----------------------------------------------------------------------------------------------------------------------
 **DATA ANALYSIS**
+
 If you want to run your own data analysis on the results showed in the paper you can access to the folder 'Figures' and run the commands:
 1. [avgs,stds] = get_regional_data('name');
 2. [avgs,stds] = get_national_data('name');
