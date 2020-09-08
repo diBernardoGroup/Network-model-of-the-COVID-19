@@ -6,16 +6,20 @@ settings.
 %}
 
 clear; clc; close all
+
+% SCENARIO SETTINGS -------------------------------------------------------
+scenario_name = 'name';                                                     % Give a name to your scenario to save figure and metrics
+flux_selector = 'high';                                                     % Sets intial fluxes to nominal ('high') or reduced by 70% ('low')
+test_factor = 1;                                                            % Test capacity multiplier (positive value)
+rho_factor = 1;                                                             % Lockdown release modulator (subject to be between 0 and 1)
+
 disp('Loading data...');
 data_wrapper
 
-% SCENARIO SETTINGS -------------------------------------------------------
-flux_selector = 'high';                                                     % Sets intial fluxes to nominal ('high') or reduced by 70% ('low')
-
 % index = region2index('lombardy');                                         % Stops social distancing (Set select to 0 if you want to activate it)
  
-select = 0;                                                                 % 0:no control| 1:regional bang-bang control| 2:social distancing on| 3:social distancing off| 4:national bang-bang control
-flux_control_on = 0;                                                        % Flag for flux control activation
+select = 1;                                                                 % 0:no control| 1:regional bang-bang control| 2:social distancing on| 3:social distancing off| 4:national bang-bang control
+flux_control_on = 1;                                                        % Flag for flux control activation
 min_control_time = 7;                                                       % Control decision can not be undone for at least min_control_time days (minimum value is 1)
 
 final_time = 365;                                                           % Sets simulation horizon (days)
@@ -25,13 +29,13 @@ simulate_dynamics
 
 % GENERATION OF HYPERCUBES ------------------------------------------------
 disp('Generating Hypercubes...');
-N_param_var = 10000;                                                        % Sets number of Monte-Carlo simulations
+N_param_var = 10;                                                        % Sets number of Monte-Carlo simulations
 perc = 0.2;                                                                 % Sets variation ratio
-orthogonal = 1;                                                             % Flag for Orthogonal Latin Hypercube Activation
+orthogonal = 1;                                                             % Flag for Orthogonal Latin Hypercube activation
 hypercube_gen;
 
 % SIMULATION --------------------------------------------------------------
-disp('Starting MonteCarlo simulations...');
+disp(strcat('Starting MonteCarlo simulations of scenario ',scenario_name,'...'));
 S_hyp = zeros(M, length(time), N_param_var);
 I_hyp = zeros(M, length(time), N_param_var);
 Q_hyp = zeros(M, length(time), N_param_var);
@@ -67,6 +71,7 @@ parfor hyi = 1 : N_param_var
     kappa = kappa_hyp(:,hyi);
     kappa_H = kappa_H_hyp(:,hyi);
     eta_Q = eta_Q_hyp(:,hyi);
+    eta_H = eta_H_hyp(:,hyi);
     alpha(:,1) = alpha_0_hyp(:,hyi);
     psi = psi_hyp(:,hyi);
     
@@ -133,4 +138,8 @@ parfor hyi = 1 : N_param_var
 end 
     
 % RESULTS -----------------------------------------------------------------
+disp('Plotting results...');
 show_data_montecarlo
+
+% close all
+% save(strcat(scenario_name,'.mat'))

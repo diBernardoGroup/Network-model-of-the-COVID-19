@@ -1,7 +1,7 @@
-disp('Plotting results...');
 my_line_width = 1.2;
+set(0, 'DefaultFigureRenderer', 'painters');
 
-%Regional Plot
+% Regional Plot
 fig = figure('name', 'regions', 'color', 'w');
 reg_ov = sum(squeeze(max(0.1 * H_hyp,[],2)>H_max),1);
 reg_ov_1 = max(0.1 * mean(H_hyp,3),[],2)>H_max;
@@ -9,8 +9,11 @@ set(fig,'defaultAxesColorOrder',[[1 0 0]; [0 0 0]])
 for i = 1 : M
     subplot(5, 4, i);
     hold on; grid on;
-    y_max = max([mean(squeeze(I_hyp(i, :, :)/N(i)),2); mean(squeeze(Q_hyp(i, :, :)/N(i)),2) ] + ...
-        [std(squeeze(I_hyp(i, :, :)/N(i)),0,2); std(squeeze(Q_hyp(i, :, :)/N(i)),0,2)]);
+    y_max = max([mean(squeeze(I_hyp(i, :, :)/N(i)),2); mean(squeeze(Q_hyp(i, :, :)/N(i)),2)] + ...
+        [std(squeeze(I_hyp(i, :, :)/N(i)),0,2); std(squeeze(Q_hyp(i, :, :)/N(i)),0,2)]);          
+%     y_max = max([mean(squeeze(I_hyp(i, :, :)/N(i)),2); mean(squeeze(Q_hyp(i, :, :)/N(i)),2); mean(squeeze(D_hyp(i, :, :)/N(i)),2)] + ...
+%         [std(squeeze(I_hyp(i, :, :)/N(i)),0,2); std(squeeze(Q_hyp(i, :, :)/N(i)),0,2); std(squeeze(D_hyp(i, :, :)/N(i)),0,2)]);             %uncomment to display deaths in regional panels
+
     yyaxis left
     stdshade(squeeze(0.1 * H_hyp(i, :, :)/N(i))',0.2,'r',time,1);
     
@@ -72,7 +75,11 @@ for i = 1 : M
     hold off
 end
 
-%National Plot
+set( gcf, 'Position', [100 100 900 600])
+saveas(gcf,strcat('.\',scenario_name,'_a.pdf'))
+savefig(strcat('.\',scenario_name,'_a'))
+
+% National Plot
 I_national_hyp = squeeze(sum(I_hyp, 1));
 Q_national_hyp = squeeze(sum(Q_hyp, 1));
 H_national_hyp = squeeze(sum(H_hyp, 1));
@@ -89,8 +96,8 @@ y_max = max([max(mean(squeeze(I_national_hyp/N_national),2)+std(squeeze(I_nation
              max(mean(squeeze(R_national_hyp/N_national),2)+std(squeeze(R_national_hyp/N_national),0,2)),...
              max(mean(squeeze(D_national_hyp/N_national),2)+std(squeeze(D_national_hyp/N_national),0,2)),...
              max(mean(squeeze(Q_national_hyp/N_national),2)+std(squeeze(Q_national_hyp/N_national),0,2))]);
-
-         yyaxis right
+% y_max = 3e-3;
+yyaxis right
 stdshade(squeeze(I_national_hyp/N_national)',0.2,'b',time,1);
 stdshade(squeeze(Q_national_hyp/N_national)',0.2,'m',time,1);
 stdshade(squeeze(R_national_hyp/N_national)',0.2,'g',time,1);
@@ -106,7 +113,11 @@ xlim([0 final_time]);
 title('Italy');
 box on
 
-%Metrics
+set( gcf, 'Position', [100 100 400 250])
+saveas(gcf,strcat('.\',scenario_name,'_b.pdf'))
+savefig(strcat('.\',scenario_name,'_b'))
+
+% Metrics
 avg_case = zeros(1,N_param_var);
 avg_d = zeros(1,N_param_var);
 max_hosp = zeros(1,N_param_var);
@@ -152,3 +163,10 @@ maxNHSsat_std = std(maxNHSsat);
 
 fprintf('total cases (mean) = %d,\ntotal deaths (mean) = %d,\nnational peak of hospitalized (mean)= %d,\nmaximum days of saturation of healthcare system (mean) = %d,\nregion saturating the healthcare system (mean) = %d,\nnational cost (mean) = %d M\n',...
        avg_case_mean, avg_d_mean, max_hosp_mean, maxNHSsat_mean, reg_ov_mean, costi_mean);
+   
+fileID = fopen(strcat('.\',scenario_name,'.txt'),'w');
+fprintf(fileID,'avg_cases_mean = %d,\navg_deaths_mean = %d,\nmax_hosp_mean = %d,\nmaxNHSsat_mean = %d,\nn_reg_sat_mean = %d,\ncost_nat_mean = %d\n',...
+        avg_case_mean, avg_d_mean, max_hosp_mean, maxNHSsat_mean, reg_ov_mean, costi_mean);
+fprintf(fileID,'avg_cases_std = %d,\navg_deaths_std = %d,\nmax_hosp_std = %d,\nmaxNHSsat_std = %d,\nn_reg_sat_std = %d,\ncost_nat_std = %d\n',...
+        avg_case_std, avg_d_std, max_hosp_std, maxNHSsat_std, reg_ov_std, costi_std);
+fclose(fileID);

@@ -8,6 +8,9 @@ index2region = containers.Map(1:M, regions);
 
 data_italy_ph2
 
+assert(not(rho_factor > 1 || rho_factor < 0), 'rho_factor not permitted.');
+assert(not(test_factor < 0), 'test_factor not permitted.');
+
 % MODEL PARAMETERS --------------------------------------------------------
 rho_0 = zeros(M, 1);
 gamma = zeros(M, 1);
@@ -26,7 +29,7 @@ beta  = 0.4 * ones(M, 1);
 for i = 1 : M
     rho_0(i) = v_identified(regions{i}) / beta(i);
     gamma(i) = gamma_identified(regions{i});
-    alpha_0(i) = alpha_identified(regions{i});    
+    alpha_0(i) = test_factor * alpha_identified(regions{i});    
     kappa(i) = kappa_identified(regions{i});
     kappa_H(i) = kappa_H_identified(regions{i});
     psi(i)   = psi_identified(regions{i});
@@ -41,7 +44,7 @@ end
 zeta_baseline = zeta_baseline_identified;
 zeta_slope = zeta_slope_identified;
 
-rho_max = min(1,3 * rho_0);
+rho_max = min(1,rho_factor * 3 * rho_0);
 rho_min = rho_0;
 
 % FLUXES ------------------------------------------------------------------

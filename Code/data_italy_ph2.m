@@ -1,3 +1,4 @@
+% https://www.wikiwand.com/en/Regions_of_Italy
 population = containers.Map;
 population('abruzzo')    = 1311580;
 population('aosta')      = 125666;
@@ -19,30 +20,59 @@ population('tuscany')    = 3729641;
 population('trentino')   = 1072276;
 population('umbria')     = 882015;
 population('veneto')     = 4905854;
-% https://www.wikiwand.com/en/Regions_of_Italy
 
+% https://www.corriere.it/cronache/20_aprile_29/coronavirus-situazione-terapie-intensive-regione-regione-bf6ca9ac-8a52-11ea-94d3-9879860c12b6.shtml
+% beds_intensive_care = containers.Map;
+% beds_intensive_care('abruzzo')    = 172;
+% beds_intensive_care('aosta')      = 35; 
+% beds_intensive_care('apulia')     = 531;
+% beds_intensive_care('basilicata') = 73; 
+% beds_intensive_care('bolzano')    = 86;
+% beds_intensive_care('calabria')   = 206;
+% beds_intensive_care('campania')   = 440;
+% beds_intensive_care('emilia')     = 708;
+% beds_intensive_care('friuli')     = 213;
+% beds_intensive_care('lazio')      = 808;
+% beds_intensive_care('liguria')    = 374;
+% beds_intensive_care('lombardy')   = 1299;
+% beds_intensive_care('marche')     = 217;
+% beds_intensive_care('molise')     = 34;  
+% beds_intensive_care('piedmont')   = 827;
+% beds_intensive_care('sardinia')   = 158;
+% beds_intensive_care('sicily')     = 730;
+% beds_intensive_care('tuscany')    = 569;
+% beds_intensive_care('trento')     = 80;
+% beds_intensive_care('umbria')     = 105; 
+% beds_intensive_care('veneto')     = 825;
+
+
+% https://www.trovanorme.salute.gov.it/norme/renderNormsanPdf?anno=2020&codLeg=74348&parte=1%20&serie=null
 beds_intensive_care = containers.Map;
-beds_intensive_care('abruzzo')    = 151;
-beds_intensive_care('aosta')      = 30; 
-beds_intensive_care('apulia')     = 344;
-beds_intensive_care('basilicata') = 64; 
-beds_intensive_care('calabria')   = 233;
-beds_intensive_care('campania')   = 774;
-beds_intensive_care('emilia')     = 962;
-beds_intensive_care('friuli')     = 155;
-beds_intensive_care('lazio')      = 707;
-beds_intensive_care('liguria')    = 251;
-beds_intensive_care('lombardy')   = 1808;
-beds_intensive_care('marche')     = 255;
-beds_intensive_care('molise')     = 39;  
-beds_intensive_care('piedmont')   = 589;
-beds_intensive_care('sardinia')   = 163;
-beds_intensive_care('sicily')     = 592;
-beds_intensive_care('tuscany')    = 716;
-beds_intensive_care('trentino')   = 218;
-beds_intensive_care('umbria')     = 96; 
-beds_intensive_care('veneto')     = 818;
+beds_intensive_care('abruzzo')    = 189;
+beds_intensive_care('aosta')      = 18; 
+beds_intensive_care('apulia')     = 579;
+beds_intensive_care('basilicata') = 81; 
+beds_intensive_care('bolzano')    = 77;
+beds_intensive_care('calabria')   = 280;
+beds_intensive_care('campania')   = 834;
+beds_intensive_care('emilia')     = 641;
+beds_intensive_care('friuli')     = 175;
+beds_intensive_care('lazio')      = 845;
+beds_intensive_care('liguria')    = 223;
+beds_intensive_care('lombardy')   = 1446;
+beds_intensive_care('marche')     = 220;
+beds_intensive_care('molise')     = 44;  
+beds_intensive_care('piedmont')   = 626;
+beds_intensive_care('sardinia')   = 236;
+beds_intensive_care('sicily')     = 719;
+beds_intensive_care('tuscany')    = 536;
+beds_intensive_care('trento')     = 78;
+beds_intensive_care('umbria')     = 127; 
+beds_intensive_care('veneto')     = 705;
 
+beds_intensive_care('trentino') = beds_intensive_care('trento') + beds_intensive_care('bolzano');
+
+% http://www.salute.gov.it/imgs/C_17_notizie_4659_0_file.pdf
 hospitalized = containers.Map;
 hospitalized('abruzzo')    = 313 ;
 hospitalized('basilicata') = 53  ;
@@ -191,7 +221,7 @@ for i = 1:M
     eta_Q_identified(index2region(order_params(i))) = etaq(i);
 end
 
-zeta_baseline_identified = 0.016;
-zeta_slope_identified = 0.0013;
+zeta_baseline_identified = 0.0168;
+zeta_slope_identified = 0.0068;
 
 clear('I0','alpha','etah','etaq','kappa','kappah','v','zeta')

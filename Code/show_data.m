@@ -1,5 +1,6 @@
 my_line_width = 1.2;
 
+% Regional Plot
 reg_ov=max(0.1 * H,[],2)>H_max;
 fig = figure('name', 'regions', 'color', 'w');
 for i = 1 : M
@@ -17,16 +18,6 @@ for i = 1 : M
         title(regions{i}, 'color', 'r');
     else
         title(regions{i});
-    end
-    
-	if ismember(i, 17 : 20)
-		xlabel('days')
-    end
-    
-	if i == 1
-        axP = get(gca,'Position');
-		legend('\itI', '\itQ', '\itD', '\itH', '{\itH}_{max}','Location','northwestoutside');
-        set(gca, 'Position', axP)
     end
 
     %Marks intervals of social distancing
@@ -69,6 +60,7 @@ for i = 1 : M
     end
 end
 
+% National Plot
 S_national = sum(S, 1);
 I_national = sum(I, 1);
 Q_national = sum(Q, 1);
@@ -89,11 +81,8 @@ plot(time, 0.1 * H_national/N_national,'r', 'linewidth', my_line_width);
 yline(H_max_national/N_national, '--', 'linewidth', my_line_width);
 xlim([0 final_time]);
 title('Italy');
-xlabel('days');
-legend('\itI', '\itQ', '\itR', '\itD', '\itH', '{\itH}_{max}','Location','northwest');
 
-
-%METRICS
+% Metrics
 tot_c=(I_national(end)+Q_national(end)+R_national(end)+D_national(end)+H_national(end))/final_time;
 tot_d=(D_national(end))/final_time;
 max_hosp=max(0.1 * H_national);
