@@ -21,31 +21,6 @@ population('trentino')   = 1072276;
 population('umbria')     = 882015;
 population('veneto')     = 4905854;
 
-% https://www.corriere.it/cronache/20_aprile_29/coronavirus-situazione-terapie-intensive-regione-regione-bf6ca9ac-8a52-11ea-94d3-9879860c12b6.shtml
-% beds_intensive_care = containers.Map;
-% beds_intensive_care('abruzzo')    = 172;
-% beds_intensive_care('aosta')      = 35; 
-% beds_intensive_care('apulia')     = 531;
-% beds_intensive_care('basilicata') = 73; 
-% beds_intensive_care('bolzano')    = 86;
-% beds_intensive_care('calabria')   = 206;
-% beds_intensive_care('campania')   = 440;
-% beds_intensive_care('emilia')     = 708;
-% beds_intensive_care('friuli')     = 213;
-% beds_intensive_care('lazio')      = 808;
-% beds_intensive_care('liguria')    = 374;
-% beds_intensive_care('lombardy')   = 1299;
-% beds_intensive_care('marche')     = 217;
-% beds_intensive_care('molise')     = 34;  
-% beds_intensive_care('piedmont')   = 827;
-% beds_intensive_care('sardinia')   = 158;
-% beds_intensive_care('sicily')     = 730;
-% beds_intensive_care('tuscany')    = 569;
-% beds_intensive_care('trento')     = 80;
-% beds_intensive_care('umbria')     = 105; 
-% beds_intensive_care('veneto')     = 825;
-
-
 % https://www.trovanorme.salute.gov.it/norme/renderNormsanPdf?anno=2020&codLeg=74348&parte=1%20&serie=null
 beds_intensive_care = containers.Map;
 beds_intensive_care('abruzzo')    = 189;
