@@ -1,5 +1,5 @@
 # Network-model-of-the-COVID-19: General Introduction
-Welcome to the repository related to the paper 'Intermittent yet coordinated regional strategies can alleviate the COVID-19 epidemic: a network model of the Italian case'
+Welcome to the repository related to the paper 'A network model of Italy shows that intermittent regional strategies can alleviate the COVID-19 epidemic'
 
 
 https://arxiv.org/abs/2005.07594
