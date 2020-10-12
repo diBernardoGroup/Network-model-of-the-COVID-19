@@ -2,7 +2,7 @@
 Welcome to the repository related to the paper 'A network model of Italy shows that intermittent regional strategies can alleviate the COVID-19 epidemic'
 
 
-https://arxiv.org/abs/2005.07594
+https://www.nature.com/articles/s41467-020-18827-5
 
 
 **SYSTEM REQUIREMENTS**
